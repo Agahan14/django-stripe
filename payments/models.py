@@ -15,15 +15,24 @@ class Item(models.Model):
         default="rub",
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Discount(models.Model):
     name = models.CharField(max_length=255)
     number = models.FloatField(default=1)
 
+    def __str__(self):
+        return self.name
+
 
 class Tax(models.Model):
     name = models.CharField(max_length=255)
     number = models.FloatField(default=1)
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
