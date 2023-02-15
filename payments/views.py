@@ -23,9 +23,9 @@ def buy_item(request, item_id):
                         "name": item.name,
                         'description': item.description,
                     },
-                    "unit_amount": int(item.price * 100)
+                "unit_amount": int(item.price * 100),
                 },
-                "quantity": 1
+                "quantity": item.quantity
             }
         ],
         mode='payment',
