@@ -25,12 +25,12 @@ def buy_item(request, item_id):
                     },
                 "unit_amount": int(item.price * 100),
                 },
-                "quantity": item.quantity
+                "quantity": 1
             }
         ],
         mode='payment',
-        success_url=request.build_absolute_uri(f'/success/{item.id}/'),
-        cancel_url=request.build_absolute_uri('/cancel/'),
+        success_url=request.build_absolute_uri("/index/"),
+        cancel_url=request.build_absolute_uri("/index/"),
     )
     return JsonResponse({'session_id': session.id})
 
@@ -61,8 +61,8 @@ def buy_order(request, order_id):
 
         ],
         mode='payment',
-        success_url=request.build_absolute_uri(f'/success/{order.id}/'),
-        cancel_url=request.build_absolute_uri('/cancel/'),
+        success_url=request.build_absolute_uri('/index/'),
+        cancel_url=request.build_absolute_uri('/index/'),
     )
     return JsonResponse({'session_id': session.id})
 
@@ -73,3 +73,7 @@ def order_details(request, order_id):
 
     context = {'order': order}
     return render(request, 'order.html', context)
+
+
+def index(request):
+    return render(request, 'index.html')
